@@ -718,13 +718,15 @@ h3 {
 }
 
 /* *position-block */
-
-.examples .examples-list:hover .position-box {
-  visibility: visible;
+.examples .position-box {
+  position: relative;
+  overflow: hidden;
 }
 
-.examples-list .position-box {
-  visibility: hidden;
+.examples-list .transormation-box {
+  transform: translateY(+100%);
+  transition: transform 250ms ease;
+
   height: 294px;
   width: 100%;
 
@@ -738,7 +740,6 @@ h3 {
   top: 0;
 }
 
-/* *position-text */
 .examples-list .position-text {
   margin: 0;
   font-weight: 400;
@@ -748,10 +749,13 @@ h3 {
   color: var(--third-text-color);
 }
 
-.examples-link {
-  /* *for position */
-  position: relative;
+/* Трансформация блока при наведении на li */
+.examples .examples-list:hover .transormation-box {
+  transform: translateY(0);
+}
+/* *CLOSED position-block */
 
+.examples-link {
   display: block;
 
   text-decoration: none;
