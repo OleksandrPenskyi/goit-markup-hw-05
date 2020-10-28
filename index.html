@@ -68,7 +68,21 @@
             Эффективные решения <br />
             для вашего бизнеса
           </h1>
-          <a href="#" class="link">Заказать услугу</a>
+
+          <!-- Кнопка окрытия модального окна -->
+          <button class="open-btn" type="button" data-modal-open>Заказать услугу</button>
+          <!-- Модальное окно -->
+          <div class="backdrop is-hidden" data-modal>
+            <div class="modal">
+              <!-- Кнопка закрытия модального окна -->
+              <button class="closed-btn" type="button" data-modal-close>
+                <svg class="closed-svg" width="11" height="11">
+                  <!-- <use href="./images/closed.svg#icon-closed-pointer"></use> -->
+                  <use href="./images/symbols.svg#icon-closed-pointer"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -406,5 +420,6 @@
         </div>
       </div>
     </footer>
+    <script src="./js/modal.js"></script>
   </body>
 </html>
