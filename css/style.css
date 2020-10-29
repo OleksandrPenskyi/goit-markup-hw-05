@@ -63,8 +63,6 @@ h3 {
   margin-right: auto;
   padding-left: 15px;
   padding-right: 15px;
-
-  /* outline: 2px solid red; */
 }
 
 /* Спрятать текст h2/h1 (не работает в геометрии), но оставить его для читалок */
@@ -149,20 +147,23 @@ h3 {
   position: relative;
 }
 
-/* *position - как задать ширину?*/
-.nav-list .link:hover:after {
+/* *position*/
+.nav-list .link.active:after {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+
   display: block;
   content: '';
   height: 4px;
   width: 100%;
-  background: #2196f3;
   border-radius: 2px;
-  position: absolute;
-  bottom: -1px;
+
+  background: #2196f3;
 }
 
 /* active page */
-.link.active {
+.nav-list .link.active {
   color: var(--main-blue-color);
 }
 
@@ -275,7 +276,9 @@ h3 {
 
   width: 100%;
   height: 100%;
-  z-index: 1; /* Чтобы модальное окно было выше других эллементов страницы */
+
+  /* Чтобы модальное окно было выше других эллементов страницы */
+  z-index: 1;
   background: rgba(0, 0, 0, 0.2);
 }
 
