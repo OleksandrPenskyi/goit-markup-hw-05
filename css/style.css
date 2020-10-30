@@ -170,6 +170,10 @@ h3 {
 .nav-list .link:hover,
 .nav-list .link:focus {
   color: var(--main-blue-color);
+
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* ?CLOSED nav-list */
 
@@ -205,6 +209,10 @@ h3 {
 .contacts .link:focus {
   color: var(--main-blue-color);
   fill: var(--main-blue-color);
+
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Оформляем svg */
@@ -274,6 +282,11 @@ h3 {
   top: 0;
   left: 0;
 
+  /* Для центрированния модального окна */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: 100%;
   height: 100%;
 
@@ -290,9 +303,10 @@ h3 {
 
 .modal {
   position: absolute;
-  top: 50%;
+
+  /* top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 
   width: 528px;
   height: 581px;
@@ -301,6 +315,20 @@ h3 {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+
+  animation-name: scale-modal;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+}
+
+@keyframes scale-modal {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .closed-btn {
@@ -547,10 +575,15 @@ h3 {
   margin-right: 10px;
 }
 
-.team .social-link:hover {
+.team .social-link:hover,
+.team .social-link:focus {
   fill: var(--third-text-color);
-  background: var(--main-blue-color);
+  background-color: var(--main-blue-color);
   border-radius: 50%;
+
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* !CLOSED Наша команда */
@@ -598,6 +631,10 @@ h3 {
 .clients-block .clients-link:focus {
   border-color: var(--main-blue-color);
   fill: var(--main-blue-color);
+
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* !CLOSED Постоянные клиенты */
@@ -691,8 +728,11 @@ h3 {
 .footer-social .social-link:hover,
 .footer-social .social-link:focus {
   background: var(--main-blue-color);
-}
 
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 /* !CLOSED Футер */
 
 /* Страница - "Портфолио" */
@@ -741,6 +781,10 @@ h3 {
   border-color: transparent;
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
+
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* !Примеры работ */
@@ -773,6 +817,10 @@ h3 {
 .examples .examples-list:hover {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* *position-block */
@@ -783,8 +831,6 @@ h3 {
 
 .examples-list .transormation-box {
   transform: translateY(+100%);
-  transition: transform 250ms ease;
-
   height: 294px;
   width: 100%;
 
@@ -798,6 +844,16 @@ h3 {
   top: 0;
 }
 
+/* Трансформация блока при наведении на li */
+.examples .examples-list:hover .transormation-box,
+.examples .examples-list:focus .transormation-box {
+  transform: translateY(0);
+
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .examples-list .position-text {
   margin: 0;
   font-weight: 400;
@@ -807,10 +863,6 @@ h3 {
   color: var(--third-text-color);
 }
 
-/* Трансформация блока при наведении на li */
-.examples .examples-list:hover .transormation-box {
-  transform: translateY(0);
-}
 /* *CLOSED position-block */
 
 .examples-link {
