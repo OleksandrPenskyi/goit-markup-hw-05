@@ -44,9 +44,12 @@ font-weight: 700; */
   --secondary-font-family: Raleway, sans-serif;
 
   --icon-main-color: #afb1b8;
+
+  --transition-timing-formula: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-duration: 250ms;
 }
 
-/* for all page  */
+/* *for all page  */
 body {
   font-family: var(--main-font-family);
 }
@@ -56,7 +59,7 @@ h3 {
   color: var(--primary-text-color);
 }
 
-/* main container */
+/* *main container */
 .container {
   width: 1200px;
   margin-left: auto;
@@ -65,7 +68,7 @@ h3 {
   padding-right: 15px;
 }
 
-/* Спрятать текст h2/h1 (не работает в геометрии), но оставить его для читалок */
+/* *Спрятать текст h2/h1 (не работает в геометрии), но оставить его для читалок */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -78,7 +81,7 @@ h3 {
 }
 
 /* !header */
-/* Flex items for header */
+/* *Flex items for header */
 .header {
   border-bottom: 1px solid var(--border-header-color);
   background: var(--bg-third-color);
@@ -141,11 +144,11 @@ h3 {
   color: var(--primary-text-color);
   text-decoration: none;
 
-  /* *position */
+  /* position */
   position: relative;
 
-  /* *Переход CSS */
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* Переход CSS */
+  transition: color var(--transition-duration) var(--transition-timing-formula);
 }
 
 .nav-list .link:hover,
@@ -160,7 +163,7 @@ h3 {
 
 /* *position (after) for active link*/
 .nav-list .link.active:after {
-  /* *position */
+  /* position */
   position: absolute;
   bottom: -1px;
   left: 0;
@@ -195,11 +198,12 @@ h3 {
   line-height: 1.14;
   letter-spacing: 0.02em;
 
-  /* *для заполнeния svg */
+  /* для заполнeния svg */
   fill: var(--secondary-text-color);
 
-  /* *Переход CSS */
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* Переход CSS */
+  transition: color var(--transition-duration) var(--transition-timing-formula),
+    fill var(--transition-duration) var(--transition-timing-formula);
 }
 
 .contacts .link:hover,
@@ -272,36 +276,46 @@ h3 {
   text-decoration: none;
 }
 
-/* modal window */
+/* *modal window */
 .backdrop {
-  /* *Position */
+  /* Position */
   position: fixed;
   top: 0;
   left: 0;
 
-  /* *Для центрированния модального окна */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   width: 100%;
   height: 100%;
 
-  /* *Чтобы модальное окно было выше других эллементов страницы */
-  z-index: 1;
+  /* Чтобы модальное окно было выше других эллементов страницы */
+  z-index: 100;
   background: rgba(0, 0, 0, 0.2);
+
+  /* При появлении backdrop, фон появляется плавно */
+  opacity: 1;
+  transition: opacity var(--transition-duration) var(--transition-timing-formula);
 }
 
 .backdrop.is-hidden {
   opacity: 0;
 
-  /* *чтобы пропадала подложка backdrop*/
+  /* чтобы пропадала подложка backdrop*/
   pointer-events: none;
 }
 
+/* *При выключенном backdrop, свойства modal такие */
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* *Modal активное */
 .modal {
-  /* *Position */
+  /* Position */
+  /* Центрируем */
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform var(--transition-duration) var(--transition-timing-formula);
 
   width: 528px;
   height: 581px;
@@ -310,25 +324,10 @@ h3 {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-
-  /* *Animation CSS */
-  animation-name: scale-modal;
-  animation-duration: 2s;
-  animation-timing-function: ease;
-}
-
-@keyframes scale-modal {
-  0% {
-    transform: scale(0);
-  }
-
-  100% {
-    transform: scale(1);
-  }
 }
 
 .closed-btn {
-  /* *Position относительно .modal */
+  /* Position относительно .modal */
   position: absolute;
   top: 8px;
   right: 8px;
@@ -342,7 +341,7 @@ h3 {
 }
 
 .closed-svg {
-  /* *Position Позиционируем по центру относительно круга (.closed-btn)*/
+  /* Position Позиционируем по центру относительно круга (.closed-btn)*/
   position: absolute;
   top: 50%;
   left: 50%;
@@ -435,7 +434,7 @@ h3 {
 }
 
 .work-list .list-item {
-  /* *Position */
+  /* Position */
   position: relative; /* *Position */
 
   width: calc((100% - 60px) / 3);
@@ -452,7 +451,7 @@ h3 {
 
 /* *for position-block */
 .work-list .position-block {
-  /* *Position */
+  /* Position */
   position: absolute;
   bottom: 0;
 
@@ -467,7 +466,6 @@ h3 {
 }
 
 /* *for position-text */
-
 .work-list .position-text {
   margin: 0;
 
@@ -542,7 +540,7 @@ h3 {
   letter-spacing: 0.03em;
 }
 
-/* position */
+/* *position */
 .team-list .list-text {
   margin-top: 0;
   margin-bottom: 16px;
@@ -575,9 +573,9 @@ h3 {
   fill: var(--icon-main-color);
 
   /* Переходы CSS  */
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill var(--transition-duration) var(--transition-timing-formula),
+    background-color var(--transition-duration) var(--transition-timing-formula),
+    border-radius var(--transition-duration) var(--transition-timing-formula);
 }
 
 .team .social-link:hover,
@@ -629,8 +627,8 @@ h3 {
   fill: var(--icon-main-color);
 
   /* Переходы CSS  */
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color var(--transition-duration) var(--transition-timing-formula),
+    fill var(--transition-duration) var(--transition-timing-formula);
 }
 
 .clients-block .clients-link:hover,
@@ -680,7 +678,7 @@ h3 {
   margin-top: 9px;
 }
 
-/* Делаем SVG для блока футера */
+/* *Делаем SVG для блока футера */
 .footer-flex {
   display: flex;
   align-items: baseline;
@@ -727,7 +725,7 @@ h3 {
   fill: var(--bg-card-color);
 
   /* Переходы CSS  */
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background var(--transition-duration) var(--transition-timing-formula);
 }
 
 .footer-social .social-link:hover,
@@ -741,7 +739,7 @@ h3 {
 
 /* !CLOSED Футер */
 
-/* Страница - "Портфолио" */
+/* !Страница - "Портфолио" */
 
 /* !Список-фильтр */
 .works {
@@ -779,10 +777,11 @@ h3 {
   line-height: 1.62;
   letter-spacing: 0.03em;
 
-  /* *Переходы CSS */
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* Переходы CSS */
+  transition: background-color var(--transition-duration) var(--transition-timing-formula),
+    color var(--transition-duration) var(--transition-timing-formula),
+    border-color var(--transition-duration) var(--transition-timing-formula),
+    box-shadow var(--transition-duration) var(--transition-timing-formula);
 }
 
 .filter-link:hover,
@@ -804,14 +803,14 @@ h3 {
   list-style: none;
 }
 
-/* Ширина элемента списка в % */
 .examples .examples-list {
+  /* Ширина элемента списка в % */
   width: calc((100% - 60px) / 3);
 
   background: var(--bg-card-color);
 
-  /* *Переходы CSS */
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* Переходы CSS */
+  transition: box-shadow var(--transition-duration) var(--transition-timing-formula);
 }
 
 .examples .examples-list:hover,
@@ -832,13 +831,13 @@ h3 {
 
 /* *position-block */
 .examples .position-box {
-  /* *Position */
+  /* Position */
   position: relative;
   overflow: hidden;
 }
 
 .examples-link .transormation-box {
-  /* *Position */
+  /* Position */
   position: absolute;
   top: 0;
   left: 0;
@@ -853,11 +852,11 @@ h3 {
 
   background: rgba(33, 150, 243, 0.9);
 
-  /* *Переходы CSS  */
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* Переходы CSS  */
+  transition: transform var(--transition-duration) var(--transition-timing-formula);
 }
 
-/* Трансформация блока при наведении на li */
+/* *Трансформация блока при наведении на li */
 .examples .examples-link:hover .transormation-box,
 .examples .examples-link:focus .transormation-box {
   transform: translateY(0);
@@ -872,7 +871,6 @@ h3 {
   letter-spacing: 0.03em;
   color: var(--third-text-color);
 }
-
 /* *CLOSED position-block */
 
 .examples-link {
