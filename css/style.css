@@ -814,7 +814,8 @@ h3 {
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.examples .examples-list:hover {
+.examples .examples-list:hover,
+.examples .examples-list:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
@@ -836,11 +837,12 @@ h3 {
   overflow: hidden;
 }
 
-.examples-list .transormation-box {
+.examples-link .transormation-box {
   /* *Position */
   position: absolute;
   top: 0;
   left: 0;
+  transform: translateY(+100%);
 
   padding-top: 63px;
   padding-bottom: 63px;
@@ -848,7 +850,6 @@ h3 {
   padding-right: 24px;
   height: 294px;
   width: 100%;
-  transform: translateY(+100%);
 
   background: rgba(33, 150, 243, 0.9);
 
@@ -857,8 +858,8 @@ h3 {
 }
 
 /* Трансформация блока при наведении на li */
-.examples .examples-list:hover .transormation-box,
-.examples .examples-list:focus .transormation-box {
+.examples .examples-link:hover .transormation-box,
+.examples .examples-link:focus .transormation-box {
   transform: translateY(0);
 }
 
