@@ -101,7 +101,6 @@ h3 {
   font-size: 26px;
   line-height: 1.19;
   letter-spacing: 0.03em;
-
   text-decoration: none;
 }
 
@@ -127,7 +126,6 @@ h3 {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
-
   list-style: none;
 }
 
@@ -145,10 +143,24 @@ h3 {
 
   /* *position */
   position: relative;
+
+  /* *Переход CSS */
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* *position*/
+.nav-list .link:hover,
+.nav-list .link:focus {
+  color: var(--main-blue-color);
+}
+
+/* active page */
+.nav-list .link.active {
+  color: var(--main-blue-color);
+}
+
+/* *position (after) for active link*/
 .nav-list .link.active:after {
+  /* *position */
   position: absolute;
   bottom: -1px;
   left: 0;
@@ -157,23 +169,9 @@ h3 {
   content: '';
   height: 4px;
   width: 100%;
+
   border-radius: 2px;
-
   background: #2196f3;
-}
-
-/* active page */
-.nav-list .link.active {
-  color: var(--main-blue-color);
-}
-
-.nav-list .link:hover,
-.nav-list .link:focus {
-  color: var(--main-blue-color);
-
-  transition-property: all;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* ?CLOSED nav-list */
 
@@ -197,22 +195,21 @@ h3 {
   line-height: 1.14;
   letter-spacing: 0.02em;
 
-  /* для заполнeния svg */
+  /* *для заполнeния svg */
   fill: var(--secondary-text-color);
-}
 
-.contacts .link:not(:last-child) {
-  margin-right: 30px;
+  /* *Переход CSS */
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contacts .link:hover,
 .contacts .link:focus {
   color: var(--main-blue-color);
   fill: var(--main-blue-color);
+}
 
-  transition-property: all;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+.contacts .link:not(:last-child) {
+  margin-right: 30px;
 }
 
 /* Оформляем svg */
@@ -263,6 +260,8 @@ h3 {
   padding-bottom: 10px;
   padding-right: 32px;
   padding-left: 32px;
+  border-color: transparent;
+  border-radius: 4px;
 
   background-color: var(--main-blue-color);
   color: var(--third-text-color);
@@ -271,18 +270,16 @@ h3 {
   line-height: 1.87;
   letter-spacing: 0.06em;
   text-decoration: none;
-
-  border-color: transparent;
-  border-radius: 4px;
 }
 
 /* modal window */
 .backdrop {
+  /* *Position */
   position: fixed;
   top: 0;
   left: 0;
 
-  /* Для центрированния модального окна */
+  /* *Для центрированния модального окна */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -290,23 +287,21 @@ h3 {
   width: 100%;
   height: 100%;
 
-  /* Чтобы модальное окно было выше других эллементов страницы */
+  /* *Чтобы модальное окно было выше других эллементов страницы */
   z-index: 1;
   background: rgba(0, 0, 0, 0.2);
 }
 
 .backdrop.is-hidden {
   opacity: 0;
-  /* чтобы пропадала подложка backdrop*/
+
+  /* *чтобы пропадала подложка backdrop*/
   pointer-events: none;
 }
 
 .modal {
+  /* *Position */
   position: absolute;
-
-  /* top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
 
   width: 528px;
   height: 581px;
@@ -316,6 +311,7 @@ h3 {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 
+  /* *Animation CSS */
   animation-name: scale-modal;
   animation-duration: 2s;
   animation-timing-function: ease;
@@ -332,23 +328,25 @@ h3 {
 }
 
 .closed-btn {
-  /* Позиционирую относительно .modal */
+  /* *Position относительно .modal */
   position: absolute;
   top: 8px;
   right: 8px;
 
   width: 30px;
   height: 30px;
-  background: var(--bg-card-color);
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
+
+  background: var(--bg-card-color);
 }
 
 .closed-svg {
-  /* Позиционируем по центру относительно круга (.closed-btn)*/
+  /* *Position Позиционируем по центру относительно круга (.closed-btn)*/
   position: absolute;
   top: 50%;
   left: 50%;
+
   transform: translate(-50%, -50%);
 }
 /* !CLOSED hero */
@@ -375,9 +373,10 @@ h3 {
   align-items: center;
   width: 270px;
   height: 120px;
-  background: var(--bg-secondary-color);
-  border-radius: 4px;
   margin-bottom: 30px;
+  border-radius: 4px;
+
+  background: var(--bg-secondary-color);
 }
 
 .advantages .advantages-list {
@@ -436,9 +435,10 @@ h3 {
 }
 
 .work-list .list-item {
-  width: calc((100% - 60px) / 3);
-
+  /* *Position */
   position: relative; /* *Position */
+
+  width: calc((100% - 60px) / 3);
 }
 
 /* дать всем эдементам правый маржин, кроме каждого кратного 3-м (3й, 6й, 9й) */
@@ -452,15 +452,16 @@ h3 {
 
 /* *for position-block */
 .work-list .position-block {
+  /* *Position */
+  position: absolute;
+  bottom: 0;
+
   padding-top: 27px;
   padding-bottom: 27px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  position: absolute;
-  bottom: 0;
 
   background: rgba(47, 48, 58, 0.8);
 }
@@ -469,6 +470,7 @@ h3 {
 
 .work-list .position-text {
   margin: 0;
+
   font-family: var(--main-font-family);
   font-weight: 700;
   font-size: 14px;
@@ -504,12 +506,14 @@ h3 {
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
+
   list-style: none;
 }
 
 .team-list .list-item {
   width: calc((100% - 90px) / 4);
   padding-bottom: 30px;
+
   background: var(--bg-card-color);
   border-radius: 0px 0px 4px 4px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -530,13 +534,12 @@ h3 {
   margin-bottom: 10px;
   margin-left: 0;
   margin-right: 0;
+  text-align: center;
 
   font-weight: 500;
   font-size: 16px;
   line-height: 1.19;
   letter-spacing: 0.03em;
-
-  text-align: center;
 }
 
 /* position */
@@ -545,20 +548,20 @@ h3 {
   margin-bottom: 16px;
   margin-left: 0;
   margin-right: 0;
+  text-align: center;
 
   color: var(--secondary-text-color);
   font-weight: 400;
   font-size: 16px;
   line-height: 1.19;
   letter-spacing: 0.03em;
-
-  text-align: center;
 }
 
 .team .social-block {
   display: flex;
   justify-content: center;
   align-items: center;
+
   list-style: none;
 }
 
@@ -568,11 +571,13 @@ h3 {
   align-items: center;
   width: 44px;
   height: 44px;
-  fill: var(--icon-main-color);
-}
 
-.team .social-link:not(:last-child) {
-  margin-right: 10px;
+  fill: var(--icon-main-color);
+
+  /* Переходы CSS  */
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team .social-link:hover,
@@ -580,12 +585,11 @@ h3 {
   fill: var(--third-text-color);
   background-color: var(--main-blue-color);
   border-radius: 50%;
-
-  transition-property: all;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.team .social-link:not(:last-child) {
+  margin-right: 10px;
+}
 /* !CLOSED Наша команда */
 
 /* !Постоянные клиенты */
@@ -615,28 +619,29 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
+
   width: calc((100% - 150px) / 6);
   height: 90px;
+
+  text-decoration: none;
   border: 1px solid var(--icon-main-color);
   border-radius: 4px;
   fill: var(--icon-main-color);
-}
 
-.clients-block .clients-link:not(:last-child) {
-  margin-right: 30px;
+  /* Переходы CSS  */
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-block .clients-link:hover,
 .clients-block .clients-link:focus {
   border-color: var(--main-blue-color);
   fill: var(--main-blue-color);
-
-  transition-property: all;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.clients-block .clients-link:not(:last-child) {
+  margin-right: 30px;
+}
 /* !CLOSED Постоянные клиенты */
 
 /* !Футер */
@@ -716,23 +721,24 @@ h3 {
   align-items: center;
   width: 44px;
   height: 44px;
+
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
   fill: var(--bg-card-color);
+
+  /* Переходы CSS  */
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-social .social-link:hover,
+.footer-social .social-link:focus {
+  background: var(--main-blue-color);
 }
 
 .footer-social .social-link:not(:last-child) {
   margin-right: 10px;
 }
 
-.footer-social .social-link:hover,
-.footer-social .social-link:focus {
-  background: var(--main-blue-color);
-
-  transition-property: all;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
 /* !CLOSED Футер */
 
 /* Страница - "Портфолио" */
@@ -772,6 +778,11 @@ h3 {
   font-size: 16px;
   line-height: 1.62;
   letter-spacing: 0.03em;
+
+  /* *Переходы CSS */
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filter-link:hover,
@@ -781,10 +792,6 @@ h3 {
   border-color: transparent;
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-
-  transition-property: all;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* !Примеры работ */
@@ -802,6 +809,14 @@ h3 {
   width: calc((100% - 60px) / 3);
 
   background: var(--bg-card-color);
+
+  /* *Переходы CSS */
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.examples .examples-list:hover {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
 /* правый маржин для всех элементов списка, кроме каждого 3-го, 6-го, 9-го и тд */
@@ -814,48 +829,42 @@ h3 {
   margin-bottom: 30px;
 }
 
-.examples .examples-list:hover {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
-
-  transition-property: all;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 /* *position-block */
 .examples .position-box {
+  /* *Position */
   position: relative;
   overflow: hidden;
 }
 
 .examples-list .transormation-box {
-  transform: translateY(+100%);
-  height: 294px;
-  width: 100%;
+  /* *Position */
+  position: absolute;
+  top: 0;
+  left: 0;
 
-  background: rgba(33, 150, 243, 0.9);
   padding-top: 63px;
   padding-bottom: 63px;
   padding-left: 24px;
   padding-right: 24px;
+  height: 294px;
+  width: 100%;
+  transform: translateY(+100%);
 
-  position: absolute;
-  top: 0;
+  background: rgba(33, 150, 243, 0.9);
+
+  /* *Переходы CSS  */
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Трансформация блока при наведении на li */
 .examples .examples-list:hover .transormation-box,
 .examples .examples-list:focus .transormation-box {
   transform: translateY(0);
-
-  transition-property: all;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .examples-list .position-text {
   margin: 0;
+
   font-weight: 400;
   font-size: 18px;
   line-height: 1.56;
